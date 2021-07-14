@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dirmod</title>
+</head>
+
+<body>
+    <input id="textInput" type="text" />
+    <h2 id="resultElement"></h2>
+
+    <script>
+        const botones = [["2", "a", "b", "c"], ["3", "d", "e", "f"], ["4", "g", "h", "i"], ["5", "j", "k", "l"], ["6", "m", "n", "o"], ["7", "p", "q", "r", "s"], ["8", "t", "u", "v"], ["9", "w", "x", "y", "z"], ["*"], ["0", " "], ["#"]]
+
+        const textInput = document.getElementById('textInput')
+
+        textInput.addEventListener('keypress', (event) => {
+            setTimeout(() => {
+                let result = '';
+
+                const obtenerTextoEnNumeros = (letter) => {
+                    let string = '';
+
+                    botones.forEach(button => {
+                        if (button.indexOf(letter) >= 0) {
+                            string = button[0].repeat(button.indexOf(letter))
+                        }
+                    }
+
+                    );
+
+                    if (result.split("")[result.split("").length - 1] === string.split("")[0]) {
+                        return result = result + ' ' + string;
+                    }
+                    return result +=  string;
+                }
+
+
+                event.target.value.split("").forEach((letter) => {
+                    obtenerTextoEnNumeros(letter)
+                })
+
+                document.getElementById("resultElement").innerHTML = result;
+
+            }, 1000)
+        });
+
+
+
+    </script>
+</body>
+
+</html>
